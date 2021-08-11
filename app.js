@@ -2,14 +2,17 @@ let library = [];
 
 function addBook () {
   const book = {};
-  book.title = document.getElementById('title').value;
-  book.author = document.getElementById('author').value;
+  book.title = document.getElementById('Title').value;
+  book.author = document.getElementById('Author').value;
+  library.push(book);
   displayBooks();
+  saveLibrary();
 }
 
 function removeBook(title){
   library = library.filter(book => book.title !== title);
   displayBooks();
+  saveLibrary();
 }
 
 function displayBooks() {
@@ -37,6 +40,10 @@ function displayBooks() {
 }
 
 window.onload = function() {
-  library = '[]';
+  library = JSON.parse(localStorage.getItem('library') || '[]');
   displayBooks();
+}
+
+function saveLibrary() {
+  localStorage.setItem('library', JSON.stringify(library));
 }
