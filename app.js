@@ -2,7 +2,7 @@
 let library = [];
 
 // eslint-disable-next-line no-unused-vars
-function addBook () {
+function addBook() {
   const book = {};
   book.title = document.getElementById('Title').value;
   book.author = document.getElementById('Author').value;
@@ -11,8 +11,8 @@ function addBook () {
   saveLibrary();
 }
 
-function removeBook(title){
-  library = library.filter(book => book.title !== title);
+function removeBook(title) {
+  library = library.filter((book) => book.title !== title);
   displayBooks();
   saveLibrary();
 }
@@ -28,7 +28,7 @@ function displayBooks() {
     p2.innerHTML = book.title;
     const hr = document.createElement('hr');
     const btn = document.createElement('button');
-    btn.innerHTML = "Remove";
+    btn.innerHTML = 'Remove';
     btn.addEventListener('click', () => {
       removeBook(book.title);
     });
@@ -41,10 +41,10 @@ function displayBooks() {
   });
 }
 
-window.onload = function() {
+window.onload = function () {
   library = JSON.parse(localStorage.getItem('library') || '[]');
   displayBooks();
-}
+};
 
 function saveLibrary() {
   localStorage.setItem('library', JSON.stringify(library));
