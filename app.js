@@ -1,5 +1,7 @@
+/* eslint no-use-before-define:["error",{"functions":false}] */
 let library = [];
 
+// eslint-disable-next-line no-unused-vars
 function addBook () {
   const book = {};
   book.title = document.getElementById('Title').value;
