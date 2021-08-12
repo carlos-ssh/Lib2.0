@@ -1,9 +1,12 @@
 /* eslint no-use-before-define:["error",{"functions":false}] */
 let library = [];
+let cont = 0;
 
 // eslint-disable-next-line no-unused-vars
 function addBook() {
   const book = {};
+  bookId = cont += 1;
+  book.id = bookId;
   book.title = document.getElementById('Title').value;
   book.author = document.getElementById('Author').value;
   library.push(book);
@@ -11,8 +14,8 @@ function addBook() {
   saveLibrary();
 }
 
-function removeBook(title) {
-  library = library.filter((book) => book.title !== title);
+function removeBook(id) {
+  library = library.filter((book) => book.id !== id);
   displayBooks();
   saveLibrary();
 }
@@ -30,7 +33,7 @@ function displayBooks() {
     const btn = document.createElement('button');
     btn.innerHTML = 'Remove';
     btn.addEventListener('click', () => {
-      removeBook(book.title);
+      removeBook(book.id);
     });
     divBook.appendChild(p);
     divBook.appendChild(p2);
