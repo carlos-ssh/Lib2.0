@@ -23,6 +23,17 @@ class Library {
   }
 }
 
+const myLibrary = new Library;
+
+function addBook() {
+  const book = {};
+  book.author = document.getElementById('Author').value = '';
+  book.title = document.getElementById('Title').value = '';
+  myLibrary.addBook(book);
+  displayBooks();
+  SaveLibrary();
+}
+
 function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
@@ -52,4 +63,6 @@ window.onload = function () {
   displayBooks();
 };
 
-
+function SaveLibrary() {
+ saveLibrary();
+}
