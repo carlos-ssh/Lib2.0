@@ -1,23 +1,26 @@
 /* eslint no-use-before-define:["error",{"functions":false}] */
-let library = [];
-let cont = 0;
+class Library {
+  constructor {
+    this.library = JSON.parse(localStorage.getItem('library') || '[]');
+    this.id = 0;
+  }
 
-// eslint-disable-next-line no-unused-vars
-function addBook() {
-  const book = {};
-  bookId = cont += 1;
-  book.id = bookId;
-  book.title = document.getElementById('Title').value;
-  book.author = document.getElementById('Author').value;
-  library.push(book);
-  displayBooks();
-  saveLibrary();
-}
+  // eslint-disable-next-line no-unused-vars
+  function addBook() {
+    const book = {};
+    this.id += 1;
+    book.id = this.id;
+    this.library.push(book);
+  }
 
-function removeBook(id) {
-  library = library.filter((book) => book.id !== id);
-  displayBooks();
-  saveLibrary();
+  function removeBook(id) {
+    this.library = library.filter((book) => book.id !== id);
+  }
+
+
+  function saveLibrary() {
+    localStorage.setItem('library', JSON.stringify(library));
+  }
 }
 
 function displayBooks() {
@@ -45,10 +48,8 @@ function displayBooks() {
 }
 
 window.onload = function () {
-  library = JSON.parse(localStorage.getItem('library') || '[]');
+
   displayBooks();
 };
 
-function saveLibrary() {
-  localStorage.setItem('library', JSON.stringify(library));
-}
+
