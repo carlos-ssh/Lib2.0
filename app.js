@@ -34,6 +34,12 @@ function addBook() {
   SaveLibrary();
 }
 
+function removeBook(id) {
+  myLibrary.removeBook();
+  displayBooks();
+  SaveLibrary();
+}
+
 function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
