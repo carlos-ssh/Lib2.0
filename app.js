@@ -66,8 +66,10 @@ function displayBooks() {
     const btn = document.createElement('button');
     btn.innerHTML = 'Remove';
     btn.classList.add('btn');
-    btn.classList.add('btn-danger');
-
+    btn.classList.add('bg-light');
+    btn.classList.add('border-dark');
+    btn.classList.add('border');
+    btn.classList.add('border-3');
     btn.addEventListener('click', () => {
       removeBook(book.id);
     });

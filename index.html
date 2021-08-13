@@ -9,23 +9,40 @@
     <title>Library 2.0</title>
   </head>
   <body>
-    <header>
-      <h1>Library 2.0</h1>
+    <header class="head">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid d-flex justify-content-between">
+        <div class="">
+          <a class="navbar-brand fw-bold" href="#">Library</a>
+        </div>
+        <div class="navbar" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+	    <a class="nav-link active" aria-current="page" href="#">List</a>
+	    <a class="nav-link active" href="#">Add new</a>
+	    <a class="nav-link active" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+      </nav>
     </header>
     <main> 
-      <section>
-	<div id="library"></div>
+      <section class="container">
+	<h1 class="text-center">All Awesome Books</h1>
+	<div id="library" class="container-fluid border border-dark mx-0 px-0">
+	</div>
       </section>
-      <section>
-	<div>
-	  <form>
+      <div class="row"></div>
+      <section class="container mt-5">
+	<h1 class="text-center">Add a New Book </h1>
+	<div class="container-fluid ">
+	  <form class="w-50 mx-auto align-items-center">
             <div class="mb-3">
-              <input type="text" class="form-control" id="Author" placeholder="Author">
+              <input type="text" class="form-control border-dark" id="Author" placeholder="Author">
             </div>
             <div class="mb-3">
-	      <input type="text" class="form-control" id="Title" placeholder="Title">
+	      <input type="text" class="form-control border-dark" id="Title" placeholder="Title">
 	    </div>
-            <button type="button" class="btn btn-primary" id="addBtn" onclick='addBook();'>Add</button>
+            <button type="button" class="btn border border-dark border-2 float-end" id="addBtn" onclick='addBook();'>Add</button>
           </form>
 	</div>
       </section>
