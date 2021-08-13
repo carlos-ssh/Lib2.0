@@ -21,7 +21,6 @@ class Library {
   }
 }
 
-
 const myLibrary = new Library();
 
 // eslint-disable-next-line no-unused-vars
@@ -84,10 +83,9 @@ function displayBooks() {
 }
 
 window.onload = function () {
-  library = JSON.parse(localStorage.getItem('library') || '[]');
   displayBooks();
 };
 
-function saveLibrary() {
-  localStorage.setItem('library', JSON.stringify(library));
+function SaveLibrary() {
+  myLibrary.saveLibrary();
 }
