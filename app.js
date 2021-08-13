@@ -45,7 +45,6 @@ function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
   let rowCount = 0;
-
   myLibrary.library.map((book) => {
     const divListElm = document.createElement('div');
     const divBtn = document.createElement('div');
@@ -62,7 +61,7 @@ function displayBooks() {
 
     const bookText = document.createElement('h4');
     bookText.innerHTML = `"${book.title}" by ${book.author}`;
-    const btn = document.createElement('BUTTON');
+    const btn = document.createElement('button');
     btn.innerHTML = 'Remove';
     btn.classList.add('btn');
     btn.classList.add('btn-danger');
