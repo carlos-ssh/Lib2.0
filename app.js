@@ -1,54 +1,92 @@
+/* eslint-disable no-undef */
 /* eslint no-use-before-define:["error",{"functions":false}] */
-let library = [];
-let cont = 0;
+class Library {
+  constructor() {
+    this.library = JSON.parse(localStorage.getItem('library') || '[]');
+    this.id = 0;
+  }
+
+  addBook(title, author) {
+    this.id += 1;
+    const book = {};
+    book.id = this.id;
+    book.title = title; 
+    book.author = author;
+    this.library.push(book);
+  }
+
+  removeBook(id) {
+    this.library = this.library.filter((book) => book.id !== id);
+  }
+
+  saveLibrary() {
+    localStorage.setItem('library', JSON.stringify(this.library));
+  } 
+}
+
+const myLibrary = new Library();
 
 // eslint-disable-next-line no-unused-vars
 function addBook() {
-  const book = {};
-  bookId = cont += 1;
-  book.id = bookId;
-  book.title = document.getElementById('Title').value;
-  book.author = document.getElementById('Author').value;
-  library.push(book);
+  const author = document.getElementById('Author').value;
+  const title = document.getElementById('Title').value;
+  myLibrary.addBook(title, author);
   displayBooks();
-  saveLibrary();
+  SaveLibrary();
+  document.getElementById('Author').value = '';
+  document.getElementById('Title').value = '';
 }
 
 function removeBook(id) {
-  library = library.filter((book) => book.id !== id);
+  myLibrary.removeBook(id);
   displayBooks();
-  saveLibrary();
+  SaveLibrary();
 }
 
 function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
-  library.map((book) => {
+  let rowCount = 0;
+  myLibrary.library.map((book) => {
+    const divListElm = document.createElement('div');
+    const divBtn = document.createElement('div');
     const divBook = document.createElement('div');
-    const p = document.createElement('p');
-    p.innerHTML = book.author;
-    const p2 = document.createElement('p');
-    p2.innerHTML = book.title;
-    const hr = document.createElement('hr');
+
+    if (rowCount % 2 === 0) {
+      divListElm.classList.add('bg-secondary');
+    }
+    rowCount += 1;
+    divListElm.classList.add('list-group-item');
+    divListElm.classList.add('list-group-item-action');
+    divListElm.classList.add('d-flex');
+    divListElm.classList.add('justify-content-between');
+
+    const bookText = document.createElement('h4');
+    bookText.innerHTML = `"${book.title}" by ${book.author}`;
     const btn = document.createElement('button');
     btn.innerHTML = 'Remove';
+    btn.classList.add('btn');
+    btn.classList.add('btn-danger');
+
     btn.addEventListener('click', () => {
       removeBook(book.id);
     });
-    divBook.appendChild(p);
-    divBook.appendChild(p2);
-    divBook.appendChild(hr);
-    divBook.appendChild(btn);
-    libraryDiv.appendChild(divBook);
+
+    divListElm.appendChild(divBook);
+    divListElm.appendChild(divBtn);
+
+    divBook.appendChild(bookText);
+    divBtn.appendChild(btn);
+    libraryDiv.appendChild(divListElm);
+
     return book;
   });
 }
 
 window.onload = function () {
-  library = JSON.parse(localStorage.getItem('library') || '[]');
   displayBooks();
 };
 
-function saveLibrary() {
-  localStorage.setItem('library', JSON.stringify(library));
+function SaveLibrary() {
+  myLibrary.saveLibrary();
 }
