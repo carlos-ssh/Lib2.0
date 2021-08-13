@@ -22,17 +22,32 @@ class Library {
 }
 
 
+const myLibrary = new Library();
 
 // eslint-disable-next-line no-unused-vars
 function addBook() {
   const book = {};
-  bookId = cont += 1;
-  book.id = bookId;
-  book.title = document.getElementById('Title').value;
   book.author = document.getElementById('Author').value;
-  library.push(book);
+  book.title = document.getElementById('Title').value;
+  myLibrary.addBook(book);
   displayBooks();
-  saveLibrary();
+  SaveLibrary();
+  document.getElementById('Author').value = '';
+  document.getElementById('Title').value = '';
+}
+
+const myLibrary = new Library();
+
+// eslint-disable-next-line no-unused-vars
+function addBook() {
+  const book = {};
+  book.author = document.getElementById('Author').value;
+  book.title = document.getElementById('Title').value;
+  myLibrary.addBook(book);
+  displayBooks();
+  SaveLibrary();
+  document.getElementById('Author').value = '';
+  document.getElementById('Title').value = '';
 }
 
 function removeBook(id) {
