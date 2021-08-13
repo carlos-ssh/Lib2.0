@@ -6,9 +6,12 @@ class Library {
     this.id = 0;
   }
 
-  addBook(book) {
+  addBook(title, author) {
     this.id += 1;
+    const book = {};
     book.id = this.id;
+    book.title = title; 
+    book.author = author;
     this.library.push(book);
   }
 
@@ -18,17 +21,16 @@ class Library {
 
   saveLibrary() {
     localStorage.setItem('library', JSON.stringify(this.library));
-  }
+  } 
 }
 
 const myLibrary = new Library();
 
 // eslint-disable-next-line no-unused-vars
 function addBook() {
-  const book = {};
-  book.author = document.getElementById('Author').value;
-  book.title = document.getElementById('Title').value;
-  myLibrary.addBook(book);
+  const author = document.getElementById('Author').value;
+  const title = document.getElementById('Title').value;
+  myLibrary.addBook(title, author);
   displayBooks();
   SaveLibrary();
   document.getElementById('Author').value = '';
