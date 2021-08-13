@@ -7,3 +7,8 @@ body {
   margin: 70px auto;
   width: 50%;
 }
+
+.head {
+  border-bottom: 3px solid #000;
+  margin-bottom: 20px;
+}
