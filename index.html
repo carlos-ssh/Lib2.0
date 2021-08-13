@@ -29,13 +29,13 @@
       <section class="container mt-4 d-flex justify-content-end">
         <h5 id="currentDate">Date Time</h5>
       </section>
-      <section class="container">
+      <section class="container" id="listSection">
 	<h1 class="text-center">All Awesome Books</h1>
 	<div id="library" class="container-fluid border border-dark mx-0 px-0">
 	</div>
       </section>
       <div class="row"></div>
-      <section class="container my-5 pb-5">
+      <section class="container my-5 pb-5" id="formSection">
 	<h1 class="text-center">Add a New Book </h1>
 	<div class="container-fluid mb-5 pb-5">
 	  <form class="w-50 mx-auto align-items-center">
@@ -48,6 +48,18 @@
             <button type="button" class="btn border border-dark border-2 float-end" id="addBtn" onclick='addBook();'>Add</button>
           </form>
 	</div>
+      </section>
+      <section class="container mt-4 d-none" id="contactSection">
+        <h3>Contact Information</h3>
+        <p>
+	  Do you have any questions or you just want to say "Hello"?
+	  You can reach out to us! 
+       </p>
+	<ul>
+	  <li>Our e-mail: <a href="mailto:service@service.com">hello@mymail.com</a> </li>
+	  <li>Our phone: <a href="tel:+52900000000">003458344432</a></li>
+	  <li>Our addreress: Streetname #122, 85039 City, Country.</li>
+	</ul>
       </section>
     </main>
     <footer class="footer bg-dark">

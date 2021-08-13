@@ -85,7 +85,15 @@ function displayBooks() {
   });
 }
 
+function setDateTime() {
+  const currentDate = document.getElementById('currentDate');
+  // eslint-disable-next-line no-unused-vars
+  const { DateTime } = luxon;
+  currentDate.innerHTML = DateTime.now().toFormat('MMM dd yyyy, t');
+}
+
 window.onload = function () {
+  displaySection('list');
   displayBooks();
   setDateTime();
 };
