@@ -87,8 +87,38 @@ function displayBooks() {
 
 window.onload = function () {
   displayBooks();
+  setDateTime();
 };
 
 function SaveLibrary() {
   myLibrary.saveLibrary();
+}
+
+// eslint-disable-next-line no-unused-vars
+function displaySection(section) {
+  const listSection = document.getElementById('listSection');
+  const formSection = document.getElementById('formSection');
+  const contactSection = document.getElementById('contactSection');
+
+  switch (section) {
+    case 'list':
+      listSection.classList.remove('d-none');
+      formSection.classList.add('d-none');
+      contactSection.classList.add('d-none');
+      break;
+
+    case 'new':
+      listSection.classList.add('d-none');
+      formSection.classList.remove('d-none');
+      contactSection.classList.add('d-none');
+      break;
+
+    case 'contact':
+      listSection.classList.add('d-none');
+      formSection.classList.add('d-none');
+      contactSection.classList.remove('d-none');
+      break;
+
+    default: break;
+  }
 }
