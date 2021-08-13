@@ -12,3 +12,8 @@ body {
   border-bottom: 3px solid #000;
   margin-bottom: 20px;
 }
+
+.bg {
+  background-color: #000;
+  opacity: 0.4;
+}
