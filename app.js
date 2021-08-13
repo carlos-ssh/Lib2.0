@@ -1,6 +1,27 @@
+/* eslint-disable no-undef */
 /* eslint no-use-before-define:["error",{"functions":false}] */
-let library = [];
-let cont = 0;
+class Library {
+  constructor() {
+    this.library = JSON.parse(localStorage.getItem('library') || '[]');
+    this.id = 0;
+  }
+
+  addBook(book) {
+    this.id += 1;
+    book.id = this.id;
+    this.library.push(book);
+  }
+
+  removeBook(id) {
+    this.library = this.library.filter((book) => book.id !== id);
+  }
+
+  saveLibrary() {
+    localStorage.setItem('library', JSON.stringify(this.library));
+  }
+}
+
+
 
 // eslint-disable-next-line no-unused-vars
 function addBook() {
