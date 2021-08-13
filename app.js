@@ -7,7 +7,6 @@ class Library {
 
   // eslint-disable-next-line no-unused-vars
   addBook() {
-    const book = {};
     this.id += 1;
     book.id = this.id;
     this.library.push(book);
@@ -19,11 +18,11 @@ class Library {
 
 
   saveLibrary() {
-    localStorage.setItem('library', JSON.stringify(library));
+    localStorage.setItem('library', JSON.stringify(this.library));
   }
 }
 
-const myLibrary = new Library;
+const myLibrary = new Library();
 
 function addBook() {
   const book = {};
@@ -32,6 +31,8 @@ function addBook() {
   myLibrary.addBook(book);
   displayBooks();
   SaveLibrary();
+  document.getElementById('Author').value = '';
+  document.getElementById('Title').value = ''; 
 }
 
 function removeBook(id) {
@@ -43,18 +44,43 @@ function removeBook(id) {
 function displayBooks() {
   const libraryDiv = document.getElementById('library');
   libraryDiv.innerHTML = '';
+  let rowCount = 0;
+
   myLibrary.library.map((book) => {
+    const divListElm = document.createElement('div');
+    const divBtn = document.createElement('div');
     const divBook = document.createElement('div');
-    const p = document.createElement('p'); 
-    p.innerHTML = `"${book.title}" by ${book.author}`;
+
+
+    if (rowCount % 2 === 0) {
+      divListElm.classList.add('bg-secondary');
+    }
+    rowCount += 1;
+    
+    divListElm.classList.add('list-group-item');
+    divListElm.classList.add('list-group-item-action');
+    divListElm.classList.add('d-flex');
+    divListElm.classList.add('justify-content-between');
+
+    const bookText = document.createElement('h4'); 
+    bookText.innerHTML = `"${book.title}" by ${book.author}`;
+
     const btn = document.createElement('button');
+    
     btn.innerHTML = 'Remove';
+    btn.classList.add('btn');
+    btn.classList.add('btn-danger');
     btn.addEventListener('click', () => {
       removeBook(book.id);
     });
-  
-  divBook.appendChild(p);
-  })
+    
+    divListElm.appendChild(divBook);
+    divListElm.appendChild(divBtn);
+
+    divBook.appendChild(bookText);
+    divBtn.appendChild(btn);
+    libraryDiv.appendChild(divListElm);
+  });
 }
 
 window.onload = function () {
