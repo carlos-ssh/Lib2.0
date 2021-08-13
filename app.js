@@ -36,24 +36,10 @@ function addBook() {
   document.getElementById('Title').value = '';
 }
 
-const myLibrary = new Library();
-
-// eslint-disable-next-line no-unused-vars
-function addBook() {
-  const book = {};
-  book.author = document.getElementById('Author').value;
-  book.title = document.getElementById('Title').value;
-  myLibrary.addBook(book);
+function removeBook(id) {
+  myLibrary.removeBook(id);
   displayBooks();
   SaveLibrary();
-  document.getElementById('Author').value = '';
-  document.getElementById('Title').value = '';
-}
-
-function removeBook(id) {
-  library = library.filter((book) => book.id !== id);
-  displayBooks();
-  saveLibrary();
 }
 
 function displayBooks() {
